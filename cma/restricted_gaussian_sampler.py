@@ -41,6 +41,10 @@ class GaussVDSampler(StatisticalModelSamplerWithZeroMeanBaseClass):
     def __init__(self, dimension, randn=np.random.randn, debug=False):
         """pass dimension of the underlying sample space
         """
+        # TODO: warn if it is called. The message will be like the following:
+        # GaussVkDSampler with k = 1 is more stable in general.
+        # Consider to use GaussVkDSampler with options {'kadapt':False, 'k_init':1},
+        # instead of using GaussVDSampler.
         try:
             self.N = len(dimension)
             std_vec = np.array(dimension, copy=True)
